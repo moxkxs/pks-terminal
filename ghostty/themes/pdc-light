@@ -1,7 +1,7 @@
 # pdc-light
 # Purple accent (#7C3AED) on lavender-tinted white
 
-background = #ebe4f4
+background = #d8d0e8
 foreground = #4a4a5a
 cursor-color = #7C3AED
 cursor-text = #ebe4f4
