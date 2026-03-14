@@ -1,0 +1,28 @@
+# pdc-dark
+# Warm orange accent (#FF6B35) on warm near-black
+
+background = #0d0806
+foreground = #EDE7F4
+
+cursor-color = #FF6B35
+cursor-text = #0d0806
+
+selection-background = #2a1810
+selection-foreground = #EDE7F4
+
+palette = 0=#141414
+palette = 1=#FF6B35
+palette = 2=#8B9A6B
+palette = 3=#FF8C00
+palette = 4=#7A8BA0
+palette = 5=#A0826D
+palette = 6=#6D9B8B
+palette = 7=#cccccc
+palette = 8=#666666
+palette = 9=#FF8C55
+palette = 10=#A0B07D
+palette = 11=#FFB347
+palette = 12=#8B9DB5
+palette = 13=#C4A882
+palette = 14=#82B5A5
+palette = 15=#EDE7F4

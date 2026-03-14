@@ -1,0 +1,27 @@
+# pdc-light
+# Purple accent (#7C3AED) on lavender-tinted white
+
+background = #ebe4f4
+foreground = #4a4a5a
+cursor-color = #7C3AED
+cursor-text = #ebe4f4
+
+selection-background = #d8d0f0
+selection-foreground = #1a1a2e
+
+palette = 0=#1a1a2e
+palette = 1=#7C3AED
+palette = 2=#5A7A4D
+palette = 3=#6D28D9
+palette = 4=#4A5A7A
+palette = 5=#8B5CF6
+palette = 6=#4D7A6B
+palette = 7=#333344
+palette = 8=#999aaa
+palette = 9=#8B5CF6
+palette = 10=#6B8A5D
+palette = 11=#7C3AED
+palette = 12=#5A6A8A
+palette = 13=#A78BFA
+palette = 14=#5D8A7B
+palette = 15=#1a1a2e
