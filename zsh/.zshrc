@@ -55,7 +55,7 @@ _apply_theme() {
 }
 
 dark() {
-    sed -i '' 's/^theme = .*/theme = pdc-dark/' ~/.config/ghostty/config
+    sed -i '' 's/^theme = .*/theme = pdc-dark/' "$(readlink ~/.config/ghostty/config)"
     _apply_theme '#0d0806' '#EDE7F4' '#FF6B35' '#2a1810' '#EDE7F4' \
         '#141414' '#FF6B35' '#8B9A6B' '#FF8C00' '#7A8BA0' '#A0826D' '#6D9B8B' '#cccccc' \
         '#666666' '#FF8C55' '#A0B07D' '#FFB347' '#8B9DB5' '#C4A882' '#82B5A5' '#EDE7F4'
@@ -66,7 +66,7 @@ dark() {
 }
 
 light() {
-    sed -i '' 's/^theme = .*/theme = pdc-light/' ~/.config/ghostty/config
+    sed -i '' 's/^theme = .*/theme = pdc-light/' "$(readlink ~/.config/ghostty/config)"
     _apply_theme '#d8d0e8' '#4a4a5a' '#7C3AED' '#d8d0f0' '#1a1a2e' \
         '#1a1a2e' '#7C3AED' '#5A7A4D' '#6D28D9' '#4A5A7A' '#8B5CF6' '#4D7A6B' '#333344' \
         '#999aaa' '#8B5CF6' '#6B8A5D' '#7C3AED' '#5A6A8A' '#A78BFA' '#5D8A7B' '#1a1a2e'

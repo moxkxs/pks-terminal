@@ -22,3 +22,4 @@ window-inherit-font-size = true
 keybind = cmd+d=new_split:right
 keybind = cmd+shift+d=new_split:down
 keybind = cmd+shift+enter=toggle_fullscreen
+keybind = cmd+shift+comma=reload_config
