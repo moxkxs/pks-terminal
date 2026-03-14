@@ -11,7 +11,7 @@ fi
 
 # install packages
 echo "installing packages..."
-brew install eza bat zoxide fzf zsh-autosuggestions zsh-syntax-highlighting zsh-completions fastfetch 2>/dev/null
+brew install eza bat zoxide fzf yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions fastfetch 2>/dev/null
 
 # fix zsh completion permissions
 chmod go-w "$(brew --prefix)/share" 2>/dev/null
@@ -37,6 +37,13 @@ ln -sf "$DOTFILES/nvim/init.lua" ~/.config/nvim/init.lua
 rm -rf ~/.config/nvim/lua ~/.config/nvim/colors
 ln -sf "$DOTFILES/nvim/lua" ~/.config/nvim/lua
 ln -sf "$DOTFILES/nvim/colors" ~/.config/nvim/colors
+
+# symlink yazi
+echo "linking yazi config..."
+mkdir -p ~/.config/yazi
+ln -sf "$DOTFILES/yazi/yazi.toml" ~/.config/yazi/yazi.toml
+ln -sf "$DOTFILES/yazi/keymap.toml" ~/.config/yazi/keymap.toml
+ln -sf "$DOTFILES/yazi/theme-dark.toml" ~/.config/yazi/theme.toml
 
 # symlink scripts
 echo "linking scripts..."

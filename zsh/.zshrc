@@ -37,6 +37,16 @@ alias lt="eza --icons --group-directories-first --tree --level=2"
 alias cat="bat --style=plain"
 alias catn="bat"
 
+# yazi wrapper (cd into directory on exit)
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
 # === pdc terminal theme ===
 
 _apply_theme() {
@@ -63,6 +73,7 @@ dark() {
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;242:di=38;2;255;140;0:ex=38;2;255;107;53"
     PROMPT='%F{#FF6B35}%n%f %F{#666666}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
+    ln -sf "$HOME/dotfiles/yazi/theme-dark.toml" "$HOME/.config/yazi/theme.toml"
 }
 
 light() {
@@ -74,6 +85,7 @@ light() {
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;249:di=38;2;109;40;217:ex=38;2;124;58;237"
     PROMPT='%F{#7C3AED}%n%f %F{#999aaa}in%f %F{#6D28D9}%~%f %F{#7C3AED}→%f '
+    ln -sf "$HOME/dotfiles/yazi/theme-light.toml" "$HOME/.config/yazi/theme.toml"
 }
 
 # auto-detect theme on shell startup
@@ -82,11 +94,13 @@ if grep -q 'pdc-dark' ~/.config/ghostty/config 2>/dev/null; then
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;242:di=38;2;255;140;0:ex=38;2;255;107;53"
     PROMPT='%F{#FF6B35}%n%f %F{#666666}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
+    ln -sf "$HOME/dotfiles/yazi/theme-dark.toml" "$HOME/.config/yazi/theme.toml"
 else
     export FZF_DEFAULT_OPTS="--color=bg+:#d8d0f0,fg:#1a1a2e,fg+:#1a1a2e,hl:#6D28D9,hl+:#7C3AED,info:#999aaa,prompt:#7C3AED,pointer:#7C3AED,marker:#6D28D9,spinner:#7C3AED,header:#999aaa,border:#d8d0f0"
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;249:di=38;2;109;40;217:ex=38;2;124;58;237"
     PROMPT='%F{#7C3AED}%n%f %F{#999aaa}in%f %F{#6D28D9}%~%f %F{#7C3AED}→%f '
+    ln -sf "$HOME/dotfiles/yazi/theme-light.toml" "$HOME/.config/yazi/theme.toml"
 fi
 
 # === screensavers ===
