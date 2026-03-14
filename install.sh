@@ -38,4 +38,9 @@ rm -rf ~/.config/nvim/lua ~/.config/nvim/colors
 ln -sf "$DOTFILES/nvim/lua" ~/.config/nvim/lua
 ln -sf "$DOTFILES/nvim/colors" ~/.config/nvim/colors
 
+# symlink scripts
+echo "linking scripts..."
+mkdir -p ~/.local/bin
+ln -sf "$DOTFILES/scripts/poly" ~/.local/bin/poly
+
 echo "done! restart your terminal to see changes."

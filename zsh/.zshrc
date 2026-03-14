@@ -91,6 +91,7 @@ fi
 
 # === screensavers ===
 alias matrix="cmatrix -C red"
+alias poly="~/.local/bin/poly"
 
 # === zsh plugins (must be last) ===
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
