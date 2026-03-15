@@ -1,4 +1,4 @@
-# my-terminal-configs
+# pks-terminal
 Collection of Ghostty, Neovim, yazi, and zsh configs I use
 
 **Highlights**
