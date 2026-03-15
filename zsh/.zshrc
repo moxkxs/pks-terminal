@@ -72,7 +72,7 @@ dark() {
     export FZF_DEFAULT_OPTS="--color=bg+:#2a1810,fg:#EDE7F4,fg+:#EDE7F4,hl:#FF8C00,hl+:#FF6B35,info:#666666,prompt:#FF6B35,pointer:#FF6B35,marker:#FF8C00,spinner:#FF6B35,header:#666666,border:#2a1810"
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;242:di=38;2;255;140;0:ex=38;2;255;107;53"
-    PROMPT='%F{#FF6B35}%n%f %F{#666666}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
+    PROMPT='%F{#FF6B35}%n%f %F{#B8B8B8}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
     ln -sf "$HOME/dotfiles/yazi/theme-dark.toml" "$HOME/.config/yazi/theme.toml"
 }
 
@@ -93,7 +93,7 @@ if grep -q 'pdc-dark' ~/.config/ghostty/config 2>/dev/null; then
     export FZF_DEFAULT_OPTS="--color=bg+:#2a1810,fg:#EDE7F4,fg+:#EDE7F4,hl:#FF8C00,hl+:#FF6B35,info:#666666,prompt:#FF6B35,pointer:#FF6B35,marker:#FF8C00,spinner:#FF6B35,header:#666666,border:#2a1810"
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;242:di=38;2;255;140;0:ex=38;2;255;107;53"
-    PROMPT='%F{#FF6B35}%n%f %F{#666666}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
+    PROMPT='%F{#FF6B35}%n%f %F{#B8B8B8}in%f %F{#FF8C00}%~%f %F{#FF6B35}→%f '
     ln -sf "$HOME/dotfiles/yazi/theme-dark.toml" "$HOME/.config/yazi/theme.toml"
 else
     export FZF_DEFAULT_OPTS="--color=bg+:#d8d0f0,fg:#1a1a2e,fg+:#1a1a2e,hl:#6D28D9,hl+:#7C3AED,info:#999aaa,prompt:#7C3AED,pointer:#7C3AED,marker:#6D28D9,spinner:#7C3AED,header:#999aaa,border:#d8d0f0"
@@ -110,3 +110,6 @@ alias poly="~/.local/bin/poly"
 # === zsh plugins (must be last) ===
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[command]='fg=#61afef'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#61afef'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#61afef'
