@@ -116,6 +116,7 @@ _set_cmd_color() {
     ZSH_HIGHLIGHT_STYLES[command]="fg=$1"
     ZSH_HIGHLIGHT_STYLES[builtin]="fg=$1"
     ZSH_HIGHLIGHT_STYLES[alias]="fg=$1"
+    ZSH_HIGHLIGHT_STYLES[function]="fg=$1"
 }
 if grep -q 'pdc-dark' ~/.config/ghostty/config 2>/dev/null; then
     _set_cmd_color '#61afef'
