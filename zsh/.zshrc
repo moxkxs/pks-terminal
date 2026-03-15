@@ -67,8 +67,8 @@ _apply_theme() {
 dark() {
     sed -i '' 's/^theme = .*/theme = pdc-dark/' "$(readlink ~/.config/ghostty/config)"
     _apply_theme '#0d0806' '#EDE7F4' '#FF6B35' '#2a1810' '#EDE7F4' \
-        '#141414' '#FF6B35' '#8B9A6B' '#FF8C00' '#7A8BA0' '#A0826D' '#6D9B8B' '#cccccc' \
-        '#666666' '#FF8C55' '#A0B07D' '#FFB347' '#8B9DB5' '#C4A882' '#82B5A5' '#EDE7F4'
+        '#141414' '#FF6B35' '#50C878' '#FF8C00' '#7A8BA0' '#A0826D' '#6D9B8B' '#cccccc' \
+        '#666666' '#FF8C55' '#66D98E' '#FFB347' '#8B9DB5' '#C4A882' '#82B5A5' '#EDE7F4'
     export FZF_DEFAULT_OPTS="--color=bg+:#2a1810,fg:#EDE7F4,fg+:#EDE7F4,hl:#FF8C00,hl+:#FF6B35,info:#666666,prompt:#FF6B35,pointer:#FF6B35,marker:#FF8C00,spinner:#FF6B35,header:#666666,border:#2a1810"
     export BAT_THEME="ansi"
     export EZA_COLORS="da=38;5;242:di=38;2;255;140;0:ex=38;2;255;107;53"
