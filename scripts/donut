@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+# Spinning donut screensaver based on https://www.a1k0n.net/2011/07/20/donut-math.html
+import sys, os, time, signal, shutil, math
+
+RESET = "\033[0m"
+
+def get_color():
+    fzf = os.environ.get("FZF_DEFAULT_OPTS", "")
+    if "#EDE7F4" in fzf:
+        return "\033[38;2;255;107;53m"
+    else:
+        return "\033[38;2;124;58;237m"
+
+def cleanup(*_):
+    sys.stdout.write("\033[?25h\033[0m")
+    sys.stdout.flush()
+    os.system("clear")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, cleanup)
+signal.signal(signal.SIGTERM, cleanup)
+
+LUMINANCE_CHARS = ".,-~:;=!*#$@"
+
+def render_frame(A, B, cols, rows, color):
+    # adjust for terminal character aspect ratio (~2:1 height:width)
+    screen_w = cols
+    screen_h = rows
+
+    R1 = 1
+    R2 = 2
+    K2 = 5
+
+    # scale to fit both dimensions; use the smaller so the donut never overflows
+    K1_by_w = screen_w * K2 * 3 / (8 * (R1 + R2))
+    # height needs 2x because terminal chars are ~twice as tall as wide
+    K1_by_h = screen_h * 2 * K2 * 3 / (8 * (R1 + R2))
+    K1 = min(K1_by_w, K1_by_h)
+
+    # scale K1 for y to account for character aspect ratio (~2:1 height:width)
+    K1y = K1 * 0.5
+
+    output = [" "] * (screen_w * screen_h)
+    zbuffer = [0.0] * (screen_w * screen_h)
+
+    cosA, sinA = math.cos(A), math.sin(A)
+    cosB, sinB = math.cos(B), math.sin(B)
+
+    theta = 0.0
+    while theta < 6.2832:
+        costheta = math.cos(theta)
+        sintheta = math.sin(theta)
+
+        phi = 0.0
+        while phi < 6.2832:
+            cosphi = math.cos(phi)
+            sinphi = math.sin(phi)
+
+            circlex = R2 + R1 * costheta
+            circley = R1 * sintheta
+
+            x = circlex * (cosB * cosphi + sinA * sinB * sinphi) - circley * cosA * sinB
+            y = circlex * (sinB * cosphi - sinA * cosB * sinphi) + circley * cosA * cosB
+            z = K2 + cosA * circlex * sinphi + circley * sinA
+            ooz = 1.0 / z
+
+            xp = int(screen_w / 2 + K1 * ooz * x)
+            yp = int(screen_h / 2 - K1y * ooz * y)
+
+            L = (cosphi * costheta * sinB
+                 - cosA * costheta * sinphi
+                 - sinA * sintheta
+                 + cosB * (cosA * sintheta - costheta * sinA * sinphi))
+
+            if L > 0 and 0 <= xp < screen_w and 0 <= yp < screen_h:
+                idx = xp + screen_w * yp
+                if ooz > zbuffer[idx]:
+                    zbuffer[idx] = ooz
+                    luminance_index = min(int(L * 8), 11)
+                    output[idx] = LUMINANCE_CHARS[luminance_index]
+
+            phi += 0.02
+        theta += 0.07
+
+    out = ["\033[H"]
+    for y in range(screen_h):
+        row = []
+        in_color = False
+        for x in range(screen_w):
+            ch = output[x + screen_w * y]
+            if ch != " ":
+                if not in_color:
+                    row.append(color)
+                    in_color = True
+                row.append(ch)
+            else:
+                if in_color:
+                    row.append(RESET)
+                    in_color = False
+                row.append(ch)
+        if in_color:
+            row.append(RESET)
+        out.append("".join(row))
+        if y < screen_h - 1:
+            out.append("\n")
+    sys.stdout.write("".join(out))
+    sys.stdout.flush()
+
+def main():
+    os.system("clear")
+    sys.stdout.write("\033[?25l")
+    sys.stdout.flush()
+    color = get_color()
+    A = 0.0
+    B = 0.0
+    try:
+        while True:
+            cols, rows = shutil.get_terminal_size()
+            render_frame(A, B, cols, rows, color)
+            A += 0.04
+            B += 0.02
+            time.sleep(0.03)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        cleanup()
+
+if __name__ == "__main__":
+    main()

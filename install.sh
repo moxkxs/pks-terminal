@@ -49,5 +49,6 @@ ln -sf "$DOTFILES/yazi/theme-dark.toml" ~/.config/yazi/theme.toml
 echo "linking scripts..."
 mkdir -p ~/.local/bin
 ln -sf "$DOTFILES/scripts/poly" ~/.local/bin/poly
+ln -sf "$DOTFILES/scripts/donut" ~/.local/bin/donut
 
 echo "done! restart your terminal to see changes."
